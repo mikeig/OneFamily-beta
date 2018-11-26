@@ -1,19 +1,28 @@
 package com.example.chaohan.onefamily;
 
+import android.app.Dialog;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FeedsActivity extends AppCompatActivity {
+
+    private Button newEvent, newTask, newFriend;
+    private Context c = this;
+    Dialog newFriendDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +43,85 @@ public class FeedsActivity extends AppCompatActivity {
         }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.getMenu().getItem(3).setChecked(true);
+        navigation.getMenu().getItem(0).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Toast.makeText(FeedsActivity.this,
                 R.string.popup_notAvail, Toast.LENGTH_LONG).show();
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.popupButtons);
+                if (linearLayout.getVisibility() == View.INVISIBLE) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                } else {
+                    linearLayout.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
+
+        newFriend = (Button) findViewById(R.id.newFriendButton);
+        newEvent = (Button) findViewById(R.id.newEventButton);
+        newTask = (Button) findViewById(R.id.newTaskButton);
+        newFriendDialog = new Dialog(this);
+        newTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (c, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (c, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v);
+            }
+        });
+
+    }
+
+    public void showPopup(View v) {
+        TextView name, tags;
+        Button accept, decline, detect;
+        newFriendDialog.setContentView(R.layout.add_new_friend_layout);
+        name = (TextView) newFriendDialog.findViewById(R.id.newFriendaddName);
+        tags = (TextView) newFriendDialog.findViewById(R.id.newFriendTagAdd);
+
+        accept = (Button) newFriendDialog.findViewById(R.id.acceptFButton);
+        decline = (Button) newFriendDialog.findViewById(R.id.declineFButton);
+
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        decline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        newFriendDialog.show();
     }
 
 
@@ -66,7 +148,7 @@ public class FeedsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    Context c = this;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -82,11 +164,11 @@ public class FeedsActivity extends AppCompatActivity {
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_task_and_event:
-                    nextScreen = new Intent(c,TaskAndEventActivity.class);
+                    nextScreen = new Intent(c,CheckActivity.class);
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_my_neighbor:
-                    nextScreen = new Intent(c,NeighborActivity.class);
+                    nextScreen = new Intent(c,MainPageActivity.class);
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_friends:

@@ -5,7 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FeedsActivity">
+    <LinearLayout
+        android:id="@+id/popupButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/floatingActionButton"
+        android:layout_centerHorizontal="true"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:visibility="invisible">
 
+        <Button
+            android:id="@+id/newTaskButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorButtonBlue"
+            android:text="Post New Task"
+            android:textAllCaps="false"
+            android:textAppearance="@style/OnefamilyButtonWhiteStyle"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/newEventButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorOtherScreen"
+            android:text="Post New Event"
+            android:textAllCaps="false"
+            android:textAppearance="@style/OnefamilyButtonWhiteStyle"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/newFriendButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:color/holo_orange_light"
+            android:text="Make New Friend"
+            android:textAllCaps="false"
+            android:textAppearance="@style/OnefamilyButtonWhiteStyle"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

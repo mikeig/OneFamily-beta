@@ -9,18 +9,24 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+
+import com.google.android.gms.tasks.Task;
 
 public class TaskAndEventActivity extends AppCompatActivity {
+
+    LinearLayout task1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_and_event);
 
-        getSupportActionBar().setTitle("Tasks & Events");
+        getSupportActionBar().setTitle("");
 
         View decorView = getWindow().getDecorView();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -33,42 +39,21 @@ public class TaskAndEventActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.getMenu().getItem(3).setChecked(true);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        task1 = (LinearLayout) findViewById(R.id.taskTemp1);
+
+        task1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (TaskAndEventActivity.this, ObjectDetailActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
     }
 
-    Context c = this;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            LayoutInflater layoutInflater = (LayoutInflater)
-//                    mainFrame.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            View view;
-            Intent nextScreen;
-            switch (item.getItemId()) {
-                case R.id.navigation_feeds:
-                    nextScreen = new Intent(c,FeedsActivity.class);
-                    startActivity(nextScreen);
-                    return true;
-                case R.id.navigation_task_and_event:
-                    nextScreen = new Intent(c,TaskAndEventActivity.class);
-                    startActivity(nextScreen);
-                    return true;
-                case R.id.navigation_my_neighbor:
-                    nextScreen = new Intent(c,NeighborActivity.class);
-                    startActivity(nextScreen);
-                    return true;
-                case R.id.navigation_friends:
-                    nextScreen = new Intent(c,FriendsActivity.class);
-                    startActivity(nextScreen);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

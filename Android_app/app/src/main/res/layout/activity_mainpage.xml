@@ -123,7 +123,7 @@
                 android:layout_marginTop="183dp"
                 android:layout_marginEnd="182dp"
                 android:layout_marginRight="182dp"
-                app:srcCompat="@drawable/pinG" />
+                app:srcCompat="@drawable/pingreen" />
 
             <ImageView
                 android:id="@+id/unknownPin1"
@@ -135,7 +135,7 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginBottom="246dp"
-                app:srcCompat="@drawable/pinB" />
+                app:srcCompat="@drawable/pinblue" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/locFloating"
@@ -219,6 +219,17 @@
         android:background="@color/common_google_signin_btn_text_light_focused"
         android:foregroundGravity="top"
         android:visibility="invisible">
+
+        <Button
+            android:id="@+id/helpInLayout"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignStart="@+id/help1"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/help_xxx"
+            android:theme="@style/OnefamilyButtonStyle" />
 
         <LinearLayout
             android:layout_width="wrap_content"

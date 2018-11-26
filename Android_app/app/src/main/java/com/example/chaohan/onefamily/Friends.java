@@ -9,7 +9,7 @@ public class Friends {
     private String headSet;
     private int curId;
     private static int id = 0;
-    private static ArrayList<Friends> storedFriendList;
+    private static ArrayList<Friends> storedFriendList = new ArrayList<>();
 
     public Friends() {
 
@@ -68,11 +68,11 @@ public class Friends {
         return storedFriendList;
     }
 
-    public void addNewFriend(Friends newFriend) {
+    public static void addNewFriend(Friends newFriend) {
         storedFriendList.add(newFriend);
     }
 
-    public void loadFriendListTemp(String[] names, String[] address, String[] headSet) {
+    public static void loadFriendListTemp(String[] names, String[] address, String[] headSet) {
         for (int i=0; i<names.length; i++) {
             Friends newFriend = new Friends(names[i], address[i], headSet[i]);
             addNewFriend(newFriend);

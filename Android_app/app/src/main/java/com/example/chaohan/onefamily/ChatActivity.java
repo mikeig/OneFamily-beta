@@ -37,7 +37,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         curChat = Chatting.getChatStore();
-        curFriend = curChat.getCurFriend();
+        curFriend = Friends.getStoredFriendList().get(0);
 
         getSupportActionBar().setTitle(curFriend.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

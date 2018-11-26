@@ -60,15 +60,15 @@ public class MainPageActivity extends AppCompatActivity {
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_task_and_event:
-                    nextScreen = new Intent(MainPageActivity.this,FeedsActivity.class);
+                    nextScreen = new Intent(MainPageActivity.this,CheckActivity.class);
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_my_neighbor:
-                    nextScreen = new Intent(MainPageActivity.this,FeedsActivity.class);
-                    startActivity(nextScreen);
+//                    nextScreen = new Intent(MainPageActivity.this,NeighborActivity.class);
+//                    startActivity(nextScreen);
                     return true;
                 case R.id.navigation_friends:
-                    nextScreen = new Intent(MainPageActivity.this,FeedsActivity.class);
+                    nextScreen = new Intent(MainPageActivity.this,FriendsActivity.class);
                     startActivity(nextScreen);
                     return true;
             }
@@ -85,17 +85,15 @@ public class MainPageActivity extends AppCompatActivity {
 //        taskAndEventActivity = new TaskAndEventActivity();
 //        neighborActivity = new NeighborActivity();
 //        friendsActivity = new FriendsActivity();
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         View decorView = getWindow().getDecorView();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             decorView.setSystemUiVisibility(
-//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                     View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
@@ -160,15 +158,18 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
-        if (relativeLayout.getVisibility() == View.VISIBLE) {
-            relativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+
+        ((Button)findViewById(R.id.helpInLayout)).setOnClickListener(new View.OnClickListener() {
+            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+            @Override
+            public void onClick(View v) {
+                if (relativeLayout.getVisibility() == View.VISIBLE) {
                     ((RelativeLayout) findViewById(R.id.overlayHelp)).setVisibility(View.INVISIBLE);
                 }
-            });
+            }
+        });
 
-        }
+
 
         newTask.setOnClickListener(new View.OnClickListener() {
             @Override

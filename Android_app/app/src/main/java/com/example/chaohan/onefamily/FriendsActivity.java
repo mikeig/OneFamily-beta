@@ -1,5 +1,7 @@
 package com.example.chaohan.onefamily;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +25,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,6 +38,10 @@ public class FriendsActivity extends AppCompatActivity {
 
     private ListView myFriendList;
     private ArrayList<Friends> friends;
+
+    private Button newEvent, newTask, newFriend;
+    private Context c = this;
+    Dialog newFriendDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +62,28 @@ public class FriendsActivity extends AppCompatActivity {
         }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.getMenu().getItem(3).setChecked(true);
+        navigation.getMenu().getItem(4).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.popupButtons);
+                if (linearLayout.getVisibility() == View.INVISIBLE) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                } else {
+                    linearLayout.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
 
         String[] names = {"Jojo"};
         String[] address = {"21 Mango Dr."};
         String[] headSets = {"Jojo"};
 
+        Friends.loadFriendListTemp(names, address, headSets);
         getData();
         String[] friendNames = new String[friends.size()];
         String[] friendAddresses = new String[friends.size()];
@@ -76,18 +100,81 @@ public class FriendsActivity extends AppCompatActivity {
         myFriendList = (ListView) findViewById(R.id.friend_list);
         MyAdapter adapter = new MyAdapter(this, friendNames,friendAddresses,images);
         myFriendList.setAdapter(adapter);
-//        myFriendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//            }
-//        });
-//
+        myFriendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent nextScreen = new Intent
+                        (c, FriendDetailActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
 //        myFriendList.setHasFixedSize(true);
 //        LinearLayoutManager linearLayoutManager = new Lin1earLayoutManager(this);
 //        linearLayoutManager.setReverseLayout(true);
 //        linearLayoutManager.setStackFromEnd(true);
 //        myFriendList.setLayoutManager(linearLayoutManager);
+
+        newFriend = (Button) findViewById(R.id.newFriendButton);
+        newEvent = (Button) findViewById(R.id.newEventButton);
+        newTask = (Button) findViewById(R.id.newTaskButton);
+        newFriendDialog = new Dialog(this);
+        newTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (c, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (c, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v);
+            }
+        });
+
+    }
+
+    public void showPopup(View v) {
+        TextView name, tags;
+        Button accept, decline, detect;
+        newFriendDialog.setContentView(R.layout.add_new_friend_layout);
+        name = (TextView) newFriendDialog.findViewById(R.id.newFriendaddName);
+        tags = (TextView) newFriendDialog.findViewById(R.id.newFriendTagAdd);
+
+        accept = (Button) newFriendDialog.findViewById(R.id.acceptFButton);
+        decline = (Button) newFriendDialog.findViewById(R.id.declineFButton);
+
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        decline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        newFriendDialog.show();
     }
 
     public void getData() {
@@ -114,12 +201,12 @@ public class FriendsActivity extends AppCompatActivity {
         public View getView(int pos, View convertView, ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater)
                     getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View friendList = layoutInflater.inflate
+            @SuppressLint("ViewHolder") View friendList = layoutInflater.inflate
                     (R.layout.friend_list_layout, parent, false);
 //        ImageView images = (ImageView)findViewById(R.id.icon);
-            TextView name = (TextView) findViewById(R.id.friend_name);
-            TextView address = (TextView) findViewById(R.id.friend_address);
-            name.setText(names[pos]);
+            TextView name = (TextView) friendList.findViewById(R.id.friend_name);
+            TextView address = (TextView) friendList.findViewById(R.id.friend_address);
+            name.setText("Jojo");
             address.setText(addresses[pos]);
             return friendList;
         }
@@ -151,7 +238,6 @@ public class FriendsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Context c = this;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -167,11 +253,11 @@ public class FriendsActivity extends AppCompatActivity {
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_task_and_event:
-                    nextScreen = new Intent(c,TaskAndEventActivity.class);
+                    nextScreen = new Intent(c,CheckActivity.class);
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_my_neighbor:
-                    nextScreen = new Intent(c,NeighborActivity.class);
+                    nextScreen = new Intent(c,MainPageActivity.class);
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_friends:
