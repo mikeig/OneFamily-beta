@@ -26,13 +26,9 @@ import com.google.android.gms.maps.MapView;
 
 public class MainPageActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
-
     private Button mHelp, mProfile;
 
     private Button newEvent, newTask, newFriend;
-
-    private MapView mapView;
 
     Dialog newFriendDialog;
 
@@ -40,19 +36,12 @@ public class MainPageActivity extends AppCompatActivity {
 
     private FrameLayout mainFrame;
 
-//    private NeighborActivity neighborActivity;
-//    private FeedsActivity feedsActivity;
-//    private TaskAndEventActivity taskAndEventActivity;
-//    private FriendsActivity friendsActivity;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            LayoutInflater layoutInflater = (LayoutInflater)
-//                    mainFrame.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            View view;
+
             Intent nextScreen;
             switch (item.getItemId()) {
                 case R.id.navigation_feeds:
@@ -64,8 +53,8 @@ public class MainPageActivity extends AppCompatActivity {
                     startActivity(nextScreen);
                     return true;
                 case R.id.navigation_my_neighbor:
-//                    nextScreen = new Intent(MainPageActivity.this,NeighborActivity.class);
-//                    startActivity(nextScreen);
+                    nextScreen = new Intent(MainPageActivity.this,MainPageActivity.class);
+                    startActivity(nextScreen);
                     return true;
                 case R.id.navigation_friends:
                     nextScreen = new Intent(MainPageActivity.this,FriendsActivity.class);
@@ -81,11 +70,6 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
 
-//        feedsActivity = new FeedsActivity();
-//        taskAndEventActivity = new TaskAndEventActivity();
-//        neighborActivity = new NeighborActivity();
-//        friendsActivity = new FriendsActivity();
-
         View decorView = getWindow().getDecorView();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             decorView.setSystemUiVisibility(
@@ -97,8 +81,7 @@ public class MainPageActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        mainFrame = (FrameLayout) findViewById(R.id.mainPageFrame);
-//        mapView = (MapView) findViewById(R.id.mapView);
+//        mainFrame = (FrameLayout) findViewById(R.id.mainPageFrame);
 
         newFriendDialog = new Dialog(this);
 
@@ -120,14 +103,13 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab2 = (FloatingActionButton) MainPageActivity.this.findViewById(R.id.locFloating);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab2 = (FloatingActionButton) MainPageActivity.this.findViewById(R.id.locFloating);
+//        fab2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
         newFriend = (Button) MainPageActivity.this.findViewById(R.id.newFriendButton);
         newEvent = (Button) MainPageActivity.this.findViewById(R.id.newEventButton);
@@ -157,7 +139,6 @@ public class MainPageActivity extends AppCompatActivity {
                 }
             }
         });
-//        RelativeLayout relativeLayout = (RelativeLayout) MainPageActivity.this.findViewById(R.id.overlayHelp);
 
         ((Button)findViewById(R.id.helpInLayout)).setOnClickListener(new View.OnClickListener() {
             RelativeLayout relativeLayout = (RelativeLayout) MainPageActivity.this.findViewById(R.id.overlayHelp);

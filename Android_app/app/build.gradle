@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.chaohan.onefamily"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -18,11 +18,11 @@ android {
         }
     }
 
-    lintOptions {
-
-        checkReleaseBuilds false
-
-    }
+//    lintOptions {
+//
+//        checkReleaseBuilds false
+//
+//    }
 }
 
 dependencies {
