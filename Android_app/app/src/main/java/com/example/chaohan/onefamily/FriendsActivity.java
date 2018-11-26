@@ -206,8 +206,8 @@ public class FriendsActivity extends AppCompatActivity {
 //        ImageView images = (ImageView)findViewById(R.id.icon);
             TextView name = (TextView) friendList.findViewById(R.id.friend_name);
             TextView address = (TextView) friendList.findViewById(R.id.friend_address);
-            name.setText("Jojo");
-            address.setText(addresses[pos]);
+            name.setText(getResources().getText(R.string.friend_temp_name));
+            address.setText(getResources().getText(R.string.friend_temp_address));
             return friendList;
         }
     }

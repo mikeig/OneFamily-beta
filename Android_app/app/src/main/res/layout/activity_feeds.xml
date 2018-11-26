@@ -62,7 +62,7 @@
         android:orientation="vertical"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/newTaskButton"
