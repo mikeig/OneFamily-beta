@@ -1,5 +1,6 @@
 package com.example.chaohan.onefamily;
 
+import android.app.Dialog;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.MapView;
@@ -28,7 +30,11 @@ public class MainPageActivity extends AppCompatActivity {
 
     private Button mHelp, mProfile;
 
+    private Button newEvent, newTask, newFriend;
+
     private MapView mapView;
+
+    Dialog newFriendDialog;
 
     private boolean floatClick;
 
@@ -94,7 +100,9 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
         mainFrame = (FrameLayout) findViewById(R.id.mainPageFrame);
-        mapView = (MapView) findViewById(R.id.mapView);
+//        mapView = (MapView) findViewById(R.id.mapView);
+
+        newFriendDialog = new Dialog(this);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.getMenu().getItem(3).setChecked(true);
@@ -123,6 +131,10 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
+        newFriend = (Button) findViewById(R.id.newFriendButton);
+        newEvent = (Button) findViewById(R.id.newEventButton);
+        newTask = (Button) findViewById(R.id.newTaskButton);
+
         mHelp = (Button) findViewById(R.id.main_help_button);
         mProfile = (Button) findViewById(R.id.main_profile_button);
 
@@ -135,9 +147,86 @@ public class MainPageActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
+
+        mHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+                if (relativeLayout.getVisibility() == View.INVISIBLE) {
+                    relativeLayout.setVisibility(View.VISIBLE);
+                } else {
+                    relativeLayout.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+        if (relativeLayout.getVisibility() == View.VISIBLE) {
+            relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((RelativeLayout) findViewById(R.id.overlayHelp)).setVisibility(View.INVISIBLE);
+                }
+            });
+
+        }
+
+        newTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (MainPageActivity.this, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (MainPageActivity.this, PostActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        newFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v);
+            }
+        });
+
     }
 
 
+    public void showPopup(View v) {
+        TextView name, tags;
+        Button accept, decline, detect;
+        newFriendDialog.setContentView(R.layout.add_new_friend_layout);
+        name = (TextView) newFriendDialog.findViewById(R.id.newFriendaddName);
+        tags = (TextView) newFriendDialog.findViewById(R.id.newFriendTagAdd);
+
+        accept = (Button) newFriendDialog.findViewById(R.id.acceptFButton);
+        decline = (Button) newFriendDialog.findViewById(R.id.declineFButton);
+
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        decline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newFriendDialog.dismiss();
+            }
+        });
+
+        newFriendDialog.show();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -14,6 +14,16 @@
     <string name="title_my_neighbor">Neighbor</string>
     <string name="title_friend">Friends</string>
     <string name="popup_notAvail">Sorry, still in development</string>
+
+    <string name="friend_temp_name">Jojo</string>
+    <string name="friend_temp_address">21 Mango Dr.</string>
+    <string name="friend_temp_email">jojo@mail.com</string>
+    <string-array name="friend_temp_tags">
+        <item>#CatLover</item>
+        <item>#PS4</item>
+        <item>#Foodie</item>
+    </string-array>
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

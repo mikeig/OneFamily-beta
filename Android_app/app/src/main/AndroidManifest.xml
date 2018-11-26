@@ -77,26 +77,37 @@
             android:parentActivityName=".MainPageActivity"
             android:theme="@style/OnefamilyTheme" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".PostActivity" />
-        <activity android:name=".CheckActivity" />
+        <activity android:name=".PostActivity"
+            android:parentActivityName=".MainPageActivity"/>
+        <activity android:name=".CheckActivity"
+            android:parentActivityName=".MainPageActivity"/>
         <activity
             android:name=".SettingActivity"
             android:parentActivityName=".ProfileActivity"
             android:theme="@style/OnefamilyTheme" />
-        <activity android:name=".FriendsActivity" />
-        <activity android:name=".TaskAndEventActivity" />
+        <activity android:name=".FriendsActivity"
+            android:parentActivityName=".MainPageActivity"/>
+        <activity android:name=".TaskAndEventActivity"
+            android:parentActivityName=".CheckActivity"/>
         <activity
             android:name=".NeighborActivity"
             android:label="@string/title_activity_neighbor"
             android:theme="@style/OnefamilyTheme.NoActionBar" />
-        <activity android:name=".ObjectDetailActivity" />
-        <activity android:name=".CollectionsActivity" />
-        <activity android:name=".MessagesActivity" />
-        <activity android:name=".RewardsActivity" />
+        <activity android:name=".ObjectDetailActivity"
+            android:parentActivityName=".TaskAndEventActivity"/>
+        <activity android:name=".CollectionsActivity"
+            android:parentActivityName=".ProfileActivity"/>
+        <activity android:name=".MessagesActivity"
+            android:parentActivityName=".ProfileActivity"/>
+        <activity android:name=".RewardsActivity"
+            android:parentActivityName=".ProfileActivity"/>
         <activity android:name=".InvitationActivity" />
-        <activity android:name=".PrivacySetActivity" />
-        <activity android:name=".FriendDetailActivity" />
-        <activity android:name=".FeedsActivity"></activity>
+        <activity android:name=".PrivacySetActivity"
+            android:parentActivityName=".SettingActivity"/>
+        <activity android:name=".FriendDetailActivity"
+            android:parentActivityName=".FriendsActivity"/>
+        <activity android:name=".FeedsActivity"
+            android:parentActivityName=".MainPageActivity"></activity>
     </application>
 
 </manifest>

@@ -29,6 +29,7 @@
                 android:id="@+id/f_detail_row1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:layout_weight="1"
                 android:padding="6dp"
                 android:weightSum="3">
@@ -59,19 +60,22 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView18"
+                            android:id="@+id/friendDetailName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="TextView"
-                            android:textSize="18sp" />
+                            android:textColor="@color/colorOtherScreen"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/friendDetailAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="TextView" />
+                            android:text="TextView"
+                            android:textColor="@color/colorOtherScreen" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -84,15 +88,17 @@
                     android:layout_weight="0.5" />
 
                 <Button
-                    android:id="@+id/button9"
+                    android:id="@+id/friendDetaiMsgButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="6dp"
                     android:layout_marginRight="6dp"
                     android:layout_weight="1"
+                    android:background="@color/colorOtherScreen"
                     android:gravity="center"
-                    android:text="Button" />
+                    android:text="Message"
+                    android:textAppearance="@style/OnefamilyButtonWhiteStyle" />
 
             </TableRow>
 
@@ -107,34 +113,40 @@
                 android:weightSum="3">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/inviteFriendButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:background="@color/colorOtherScreen"
+                    android:text="Invite"
+                    android:textAppearance="@style/OnefamilyButtonWhiteStyle" />
 
                 <Button
                     android:id="@+id/button7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:background="@color/colorOtherScreen"
+                    android:text="Delete"
+                    android:textAppearance="@style/OnefamilyButtonWhiteStyle" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/blockFriendButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:background="@android:color/holo_red_dark"
+                    android:text="Block"
+                    android:textAppearance="@style/OnefamilyButtonWhiteStyle" />
             </TableRow>
 
         </RelativeLayout>
@@ -146,21 +158,25 @@
             android:padding="24dp">
 
             <TextView
-                android:id="@+id/friendEmail"
+                android:id="@+id/friendDetailEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6dp"
+                android:paddingLeft="24dp"
                 android:text="Email"
+                android:textColor="@color/colorOtherScreen"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/friendTags"
+                android:id="@+id/friendDetailTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6dp"
+                android:paddingLeft="24dp"
                 android:text="Tags"
+                android:textColor="@color/colorOtherScreen"
                 android:textSize="16sp" />
 
             <Button
@@ -168,8 +184,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="24dp"
                 android:text="See Her Profile"
@@ -183,8 +199,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="24dp"
                 android:text="See Her Ongoing Tasks/Events"
