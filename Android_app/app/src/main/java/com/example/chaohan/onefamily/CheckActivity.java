@@ -68,15 +68,15 @@ public class CheckActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) CheckActivity.this.findViewById(R.id.navigation);
         navigation.getMenu().getItem(1).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = (FloatingActionButton) CheckActivity.this.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.popupButtons);
+                LinearLayout linearLayout = (LinearLayout) CheckActivity.this.findViewById(R.id.popupButtons);
                 if (linearLayout.getVisibility() == View.INVISIBLE) {
                     linearLayout.setVisibility(View.VISIBLE);
                 } else {
@@ -85,9 +85,9 @@ public class CheckActivity extends AppCompatActivity {
 
             }
         });
-        newFriend = (Button) findViewById(R.id.newFriendButton);
-        newEvent = (Button) findViewById(R.id.newEventButton);
-        newTask = (Button) findViewById(R.id.newTaskButton);
+        newFriend = (Button) CheckActivity.this.findViewById(R.id.newFriendButton);
+        newEvent = (Button) CheckActivity.this.findViewById(R.id.newEventButton);
+        newTask = (Button) CheckActivity.this.findViewById(R.id.newTaskButton);
         newFriendDialog = new Dialog(this);
         newTask.setOnClickListener(new View.OnClickListener() {
             @Override

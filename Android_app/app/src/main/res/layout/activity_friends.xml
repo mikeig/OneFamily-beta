@@ -14,6 +14,33 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_above="@id/navigation"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:elevation="12dp"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/main_navigation">
+
+    </android.support.design.widget.BottomNavigationView>
+
     <LinearLayout
         android:id="@+id/popupButtons"
         android:layout_width="match_parent"
@@ -65,29 +92,4 @@
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="4dp"
-        app:backgroundTint="@android:color/holo_red_light"
-        app:elevation="12dp"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/main_navigation">
-
-    </android.support.design.widget.BottomNavigationView>
 </RelativeLayout>

@@ -102,15 +102,15 @@ public class MainPageActivity extends AppCompatActivity {
 
         newFriendDialog = new Dialog(this);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) MainPageActivity.this.findViewById(R.id.navigation);
         navigation.getMenu().getItem(3).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = (FloatingActionButton) MainPageActivity.this.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.popupButtons);
+                LinearLayout linearLayout = (LinearLayout) MainPageActivity.this.findViewById(R.id.popupButtons);
                 if (linearLayout.getVisibility() == View.INVISIBLE) {
                     linearLayout.setVisibility(View.VISIBLE);
                 } else {
@@ -120,7 +120,7 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.locFloating);
+        FloatingActionButton fab2 = (FloatingActionButton) MainPageActivity.this.findViewById(R.id.locFloating);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,9 +129,9 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        newFriend = (Button) findViewById(R.id.newFriendButton);
-        newEvent = (Button) findViewById(R.id.newEventButton);
-        newTask = (Button) findViewById(R.id.newTaskButton);
+        newFriend = (Button) MainPageActivity.this.findViewById(R.id.newFriendButton);
+        newEvent = (Button) MainPageActivity.this.findViewById(R.id.newEventButton);
+        newTask = (Button) MainPageActivity.this.findViewById(R.id.newTaskButton);
 
         mHelp = (Button) findViewById(R.id.main_help_button);
         mProfile = (Button) findViewById(R.id.main_profile_button);
@@ -149,7 +149,7 @@ public class MainPageActivity extends AppCompatActivity {
         mHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+                RelativeLayout relativeLayout = (RelativeLayout) MainPageActivity.this.findViewById(R.id.overlayHelp);
                 if (relativeLayout.getVisibility() == View.INVISIBLE) {
                     relativeLayout.setVisibility(View.VISIBLE);
                 } else {
@@ -157,14 +157,14 @@ public class MainPageActivity extends AppCompatActivity {
                 }
             }
         });
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+//        RelativeLayout relativeLayout = (RelativeLayout) MainPageActivity.this.findViewById(R.id.overlayHelp);
 
         ((Button)findViewById(R.id.helpInLayout)).setOnClickListener(new View.OnClickListener() {
-            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.overlayHelp);
+            RelativeLayout relativeLayout = (RelativeLayout) MainPageActivity.this.findViewById(R.id.overlayHelp);
             @Override
             public void onClick(View v) {
                 if (relativeLayout.getVisibility() == View.VISIBLE) {
-                    ((RelativeLayout) findViewById(R.id.overlayHelp)).setVisibility(View.INVISIBLE);
+                    relativeLayout.setVisibility(View.INVISIBLE);
                 }
             }
         });

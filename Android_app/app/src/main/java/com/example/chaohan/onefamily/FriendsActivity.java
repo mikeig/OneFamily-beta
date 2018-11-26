@@ -61,15 +61,15 @@ public class FriendsActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) FriendsActivity.this.findViewById(R.id.navigation);
         navigation.getMenu().getItem(4).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = (FloatingActionButton) FriendsActivity.this.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.popupButtons);
+                LinearLayout linearLayout = (LinearLayout) FriendsActivity.this.findViewById(R.id.popupButtons);
                 if (linearLayout.getVisibility() == View.INVISIBLE) {
                     linearLayout.setVisibility(View.VISIBLE);
                 } else {
@@ -97,7 +97,7 @@ public class FriendsActivity extends AppCompatActivity {
             }
         }
 
-        myFriendList = (ListView) findViewById(R.id.friend_list);
+        myFriendList = (ListView) FriendsActivity.this.findViewById(R.id.friend_list);
         MyAdapter adapter = new MyAdapter(this, friendNames,friendAddresses,images);
         myFriendList.setAdapter(adapter);
         myFriendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,9 +116,9 @@ public class FriendsActivity extends AppCompatActivity {
 //        linearLayoutManager.setStackFromEnd(true);
 //        myFriendList.setLayoutManager(linearLayoutManager);
 
-        newFriend = (Button) findViewById(R.id.newFriendButton);
-        newEvent = (Button) findViewById(R.id.newEventButton);
-        newTask = (Button) findViewById(R.id.newTaskButton);
+        newFriend = (Button) FriendsActivity.this.findViewById(R.id.newFriendButton);
+        newEvent = (Button) FriendsActivity.this.findViewById(R.id.newEventButton);
+        newTask = (Button) FriendsActivity.this.findViewById(R.id.newTaskButton);
         newFriendDialog = new Dialog(this);
         newTask.setOnClickListener(new View.OnClickListener() {
             @Override
