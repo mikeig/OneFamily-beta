@@ -70,7 +70,8 @@
             android:name=".ProfileActivity"
             android:parentActivityName=".MainPageActivity"
             android:theme="@style/OnefamilyTheme" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".ChatActivity"
+            android:parentActivityName=".FriendDetailActivity"/>
         <activity android:name=".PostActivity"
             android:parentActivityName=".MainPageActivity"/>
         <activity android:name=".CheckActivity"

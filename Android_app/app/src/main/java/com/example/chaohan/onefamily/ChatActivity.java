@@ -36,9 +36,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        curChat = Chatting.getChatStore();
         curFriend = Friends.getStoredFriendList().get(0);
-
         getSupportActionBar().setTitle(curFriend.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -53,6 +51,7 @@ public class ChatActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
+        curChat = Chatting.getChatStore();
 
         recyclerView = (RecyclerView) findViewById(R.id.chat_view);
         recyclerView.setHasFixedSize(true);
@@ -61,6 +60,8 @@ public class ChatActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        messageAdapter = new MessageAdapter(ChatActivity.this, curChat);
+        recyclerView.setAdapter(messageAdapter);
 
 //        layout = (LinearLayout) findViewById(R.id.signupLayout);
 //
@@ -105,7 +106,6 @@ public class ChatActivity extends AppCompatActivity {
 //        });
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

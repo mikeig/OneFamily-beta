@@ -51,10 +51,17 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/chat_view"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/inputRelative" />
+        android:layout_above="@+id/inputRelative"
+        android:layout_marginTop="36dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chat_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/inputRelative" />
+    </ScrollView>
 
 </RelativeLayout>

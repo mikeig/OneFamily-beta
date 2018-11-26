@@ -74,6 +74,9 @@ public class SettingActivity extends AppCompatActivity {
                     case "Visible for Neighbors":
                         break;
                     case "Privacy Setting":
+                        Intent nextScreen = new Intent(SettingActivity.this, PrivacySetActivity.class);
+                        startActivity(nextScreen);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         break;
                     case "My Profile Setting":
                         break;

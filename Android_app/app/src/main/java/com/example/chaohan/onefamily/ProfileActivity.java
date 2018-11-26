@@ -44,6 +44,46 @@ public class ProfileActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
+
+        (findViewById(R.id.collectionButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (ProfileActivity.this, CollectionsActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        (findViewById(R.id.messageButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (ProfileActivity.this, MessagesActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        (findViewById(R.id.rewardsButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (ProfileActivity.this, RewardsActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
+        (findViewById(R.id.collectionButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent
+                        (ProfileActivity.this, CollectionsActivity.class);
+                startActivity(nextScreen);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
     }
 
     @Override

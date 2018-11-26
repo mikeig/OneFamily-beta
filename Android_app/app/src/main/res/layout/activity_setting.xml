@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingTop="36dp"
+tools:context=".SettingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,10 +15,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="0dp"
-            android:layout_weight="5"
             android:fadingEdgeLength="5dp"
             android:orientation="vertical">
 
@@ -36,15 +36,15 @@
             <ListView
                 android:id="@+id/app_setting_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:cacheColorHint="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:orientation="vertical">
 
             <TextView
@@ -62,7 +62,7 @@
             <ListView
                 android:id="@+id/about_setting_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:theme="@style/Base.Widget.AppCompat.ListView" />
         </LinearLayout>
@@ -70,12 +70,12 @@
         <TextView
             android:id="@+id/textView16"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:fontFamily="@font/cabin"
             android:gravity="center"
             android:text="OneFamily version Beta"
             android:textColor="@color/colorFontGray" />
     </LinearLayout>
+
 </RelativeLayout>
